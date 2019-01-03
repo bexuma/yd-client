@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import ReactMarkdown from "react-markdown";
 
 const POSTS_QUERY = gql`
   {
@@ -32,7 +33,9 @@ class App extends Component {
                   return (
                     <li key={id}>
                       <h4>{title}</h4>
-                      <p>{body}</p>
+                      <div style={{ whiteSpace: "pre-line" }}>
+                        <ReactMarkdown source={body} />
+                      </div>
                     </li>
                   );
                 })}
