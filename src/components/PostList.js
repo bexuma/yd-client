@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const POSTS_QUERY = gql`
   {
@@ -19,7 +19,6 @@ const POSTS_QUERY = gql`
   }
 `;
 
-
 export class PostList extends Component {
   render() {
     return (
@@ -31,7 +30,7 @@ export class PostList extends Component {
           return data.posts.map(({ id, postTranslations }) => (
             <div key={id}>
               <ul>
-                {postTranslations.map(({title, body}) => {
+                {postTranslations.map(({ title, body }) => {
                   return (
                     <li key={id}>
                       <Link to={`/posts/${id}`}>{title}</Link>
@@ -46,8 +45,8 @@ export class PostList extends Component {
           ));
         }}
       </Query>
-    )
+    );
   }
 }
 
-export default PostList
+export default PostList;

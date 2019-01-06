@@ -1,15 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import ReactMarkdown from "react-markdown";
+
+const POST_QUERY = gql`
+  query Post($id: ID!) {
+    post(id: $id) {
+      id
+      postTranslations {
+        id
+        language
+        title
+        body
+      }
+    }
+  }
+`;
 
 export class Post extends Component {
+  renderPost = ({ id, language, title, body }) => {
+    return <h3>{title}</h3>;
+  };
+
   render() {
+    const { id } = this.props.match.params;
     return (
-      <div>
-        <p>
-          {this.props.match.params.id}
-        </p>
-      </div>
-    )
+      <Query query={POST_QUERY} variables={{ id }}>
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error :(</p>;
+
+          const post = data.post.postTranslations.find(
+            ({ language }) => language === "en"
+          );
+
+          return this.renderPost(post);
+        }}
+      </Query>
+    );
   }
 }
 
-export default Post
+export default Post;
