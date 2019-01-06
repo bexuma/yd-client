@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
+import {Link} from 'react-router-dom';
 
 const POSTS_QUERY = gql`
   {
@@ -30,10 +31,10 @@ export class PostList extends Component {
           return data.posts.map(({ id, postTranslations }) => (
             <div key={id}>
               <ul>
-                {postTranslations.map(({ language, title, body }) => {
+                {postTranslations.map(({title, body}) => {
                   return (
                     <li key={id}>
-                      <h4>{title}</h4>
+                      <Link to={`/posts/${id}`}>{title}</Link>
                       <div style={{ whiteSpace: "pre-line" }}>
                         <ReactMarkdown source={body} />
                       </div>
