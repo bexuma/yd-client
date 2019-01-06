@@ -19,7 +19,12 @@ const POST_QUERY = gql`
 
 export class Post extends Component {
   renderPost = ({ id, language, title, body }) => {
-    return <h3>{title}</h3>;
+    return (
+      <div style={{ whiteSpace: "pre-line" }}>
+        <h3>{title}</h3>
+        <ReactMarkdown source={body} />
+      </div>
+    );
   };
 
   render() {
