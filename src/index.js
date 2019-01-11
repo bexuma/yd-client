@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import App from "./components/App";
 import Post from "./components/Post";
 import CreatePost from "./components/CreatePost";
 import './material-kit.css';
+import Navbar from './components/Navbar';
 
 import ApolloClient from "apollo-boost";
 
@@ -17,9 +18,7 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <Router>
       <div>
-        <Link to="/">
-          <h3>Young Developer</h3>
-        </Link>
+      <Navbar />
 
         <Route exact path="/" component={App} />
         <Route exact path="/new_post" component={CreatePost} />
