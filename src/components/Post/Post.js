@@ -27,8 +27,7 @@ export class Post extends Component {
         <div
           className="page-header header-filter"
           style={{
-            backgroundImage:
-              "url('https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2019/01/switch-square-768x768.png')",
+            backgroundColor: "#d32f2f",
             transform: 'translate3d("0px", "0px", "0px")',
             dataParallax: true
           }}
@@ -40,11 +39,12 @@ export class Post extends Component {
                 {/* <h4></h4> */}
                 <br />
                 <a
-                  href="http://instagram.com"
+                  href="/"
                   className="btn btn-rose btn-round btn-lg"
                 >
-                  <i className="material-icons">format_align_left</i>
-                  read
+                  {/* <i className="material-icons">format_align_left</i> */}
+                  <i className="fab fa-youtube" />
+                  {"  Video Soon"}
                 </a>
               </div>
             </div>
@@ -68,28 +68,24 @@ export class Post extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="blog-tags">
-                        Tags:
-                        <span className="badge badge-primary badge-pill">
+                        <span className="badge badge-danger badge-pill" style={{marginRight: 5}}>
                           Ruby
                         </span>
-                        <span className="badge badge-primary badge-pill">
+                        <span className="badge badge-danger badge-pill" style={{marginRight: 5}}>
                           Ruby on Rails
-                        </span>
-                        <span className="badge badge-primary badge-pill">
-                          Newbee
                         </span>
                       </div>
                     </div>
 
-                    <div className="col-md-6">
+                    {/* <div className="col-md-6">
                       <a
                         href="http://google.com"
                         className="btn btn-google btn-round float-right"
                       >
-                        <i className="fa fa-google" />
+                        <i className="fab fa-google" />
                         232
                       </a>
-                    </div>
+                    </div> */}
                   </div>
 
                   <hr />
@@ -118,7 +114,7 @@ export class Post extends Component {
                       <div className="col-md-2">
                         <button
                           type="button"
-                          className="btn btn-default pull-right btn-round"
+                          className="btn btn-danger pull-right btn-round"
                         >
                           Follow
                         </button>
