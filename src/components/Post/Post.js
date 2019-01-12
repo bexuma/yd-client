@@ -1,38 +1,156 @@
-import React from "react";
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
-import { Link } from "react-router-dom";
+// import materialKit from '../../material-kit';
 
-export default props => {
-  const { postId, title, body } = props;
-  return (
-    <div
-      className="card card-plain card-blog"
-      style={{ border: "none" }}
-    >
-      <div className="row">
-        <div className="col-md-4">
-          <div className="card-image">
-            <img
-              alt={title}
-              className="img img-raised"
-              src="img/card-blog4.jpg"
-            />
+const POST_QUERY = gql`
+  query Post($id: ID!) {
+    post(id: $id) {
+      id
+      postTranslations {
+        id
+        language
+        title
+        body
+      }
+    }
+  }
+`;
+
+export class Post extends Component {
+  renderPost = ({ id, language, title, body }) => {
+    const avatar =
+      "https://scontent.fkgf1-1.fna.fbcdn.net/v/t1.0-1/p320x320/25591775_1798446113788839_8274713958521897995_n.jpg?_nc_cat=102&_nc_ht=scontent.fkgf1-1.fna&oh=d159d419b756cd8ded026395e5cacc9a&oe=5CCA3D1C";
+    return (
+      <div>
+        <div
+          className="page-header header-filter"
+          style={{
+            backgroundImage:
+              "url('https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2019/01/switch-square-768x768.png')",
+            transform: 'translate3d("0px", "0px", "0px")',
+            dataParallax: true
+          }}
+        >
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 ml-auto mr-auto text-center">
+                <h1 className="title">{title}</h1>
+                {/* <h4></h4> */}
+                <br />
+                <a
+                  href="http://instagram.com"
+                  className="btn btn-rose btn-round btn-lg"
+                >
+                  <i className="material-icons">format_align_left</i>
+                  read
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="col-md-8" style={{ whiteSpace: "pre-line" }}>
-          <h6 className="category text-info">Ruby on Rails</h6>
-          <h3 className="card-title">
-            <Link to={`/posts/${postId}`}>{title}</Link>
-          </h3>
+        <div className="main main-raised">
+          <div className="container" style={{ whiteSpace: "pre-line" }}>
+            <div className="section section-text">
+              <div className="row">
+                <ReactMarkdown
+                  className="col-md-8 ml-auto mr-auto"
+                  source={body}
+                />
+              </div>
+            </div>
 
-          <ReactMarkdown className="card-description" source={body} />
+            <div className="section section-blog-info">
+              <div className="row">
+                <div className="col-md-8 ml-auto mr-auto">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="blog-tags">
+                        Tags:
+                        <span className="badge badge-primary badge-pill">
+                          Ruby
+                        </span>
+                        <span className="badge badge-primary badge-pill">
+                          Ruby on Rails
+                        </span>
+                        <span className="badge badge-primary badge-pill">
+                          Newbee
+                        </span>
+                      </div>
+                    </div>
 
-          {/* <Link to={`/posts/${id}`}>Read More</Link> */}
+                    <div className="col-md-6">
+                      <a
+                        href="http://google.com"
+                        className="btn btn-google btn-round float-right"
+                      >
+                        <i className="fa fa-google" />
+                        232
+                      </a>
+                    </div>
+                  </div>
 
-          <p className="author">by Bexultan, 2 days ago</p>
+                  <hr />
+                  <div
+                    className="card card-profile card-plain"
+                    style={{ marginTop: 0 }}
+                  >
+                    <div className="row">
+                      <div className="col-md-2">
+                        <div className="card-avatar">
+                          <a href="http://google.com">
+                            <img
+                              className="img"
+                              src={avatar}
+                              alt="Bexultan Myrzatayev"
+                            />
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="col-md-8" style={{ textAlign: "left" }}>
+                        <h4 className="card-title">Bexultan Myrzatayev</h4>
+                        <p className="description">Aspiring teacher</p>
+                      </div>
+
+                      <div className="col-md-2">
+                        <button
+                          type="button"
+                          className="btn btn-default pull-right btn-round"
+                        >
+                          Follow
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+
+  render() {
+    const { id } = this.props.match.params;
+    return (
+      <Query query={POST_QUERY} variables={{ id }}>
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error :(</p>;
+
+          const post = data.post.postTranslations.find(
+            ({ language }) => language === "en"
+          );
+
+          return this.renderPost(post);
+        }}
+      </Query>
+    );
+  }
+}
+
+export default Post;

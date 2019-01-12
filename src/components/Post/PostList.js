@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import Post from './Post';
+import PostItem from './PostItem';
 
 const POSTS_QUERY = gql`
   {
@@ -23,7 +23,7 @@ export class PostList extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-10 col-md-offset-1">
+          <div className="col-md-10 ml-auto mr-auto">
             <h2 className="title">Latest Blogposts</h2>
             <Query query={POSTS_QUERY}>
               {({ loading, error, data }) => {
@@ -32,7 +32,7 @@ export class PostList extends Component {
 
                 return data.posts.map(({ id, postTranslations }) =>
                   postTranslations.map(({ title, body }) => {
-                    return <Post key={id} postId={id} title={title} body={body} /> 
+                    return <PostItem key={id} postId={id} title={title} body={body} /> 
                   })
                 );
               }}

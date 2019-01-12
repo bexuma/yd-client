@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import App from "./components/App";
-import Post from "./components/Post";
+import Post from "./components/Post/Post";
 import CreatePost from "./components/CreatePost";
 import './material-kit.css';
 import Navbar from './components/Navbar';
