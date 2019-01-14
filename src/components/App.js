@@ -3,12 +3,7 @@ import PostList from "./Post/PostList";
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <br />
-        <PostList />
-      </div>
-    );
+    return <PostList />;
   }
 }
 

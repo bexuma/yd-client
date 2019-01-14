@@ -38,10 +38,7 @@ export class Post extends Component {
                 <h1 className="title">{title}</h1>
                 {/* <h4></h4> */}
                 <br />
-                <a
-                  href="/"
-                  className="btn btn-rose btn-round btn-lg"
-                >
+                <a href="/" className="btn btn-rose btn-round btn-lg">
                   {/* <i className="material-icons">format_align_left</i> */}
                   <i className="fab fa-youtube" />
                   {"  Video Soon"}
@@ -68,10 +65,16 @@ export class Post extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="blog-tags">
-                        <span className="badge badge-danger badge-pill" style={{marginRight: 5}}>
+                        <span
+                          className="badge badge-danger badge-pill"
+                          style={{ marginRight: 5 }}
+                        >
                           Ruby
                         </span>
-                        <span className="badge badge-danger badge-pill" style={{marginRight: 5}}>
+                        <span
+                          className="badge badge-danger badge-pill"
+                          style={{ marginRight: 5 }}
+                        >
                           Ruby on Rails
                         </span>
                       </div>
@@ -131,9 +134,9 @@ export class Post extends Component {
   };
 
   render() {
-    const { id } = this.props.match.params;
+    const { postTranslationId } = this.props.match.params;
     return (
-      <Query query={POST_QUERY} variables={{ id }}>
+      <Query query={POST_QUERY} variables={{ id: postTranslationId }}>
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
