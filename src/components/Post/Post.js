@@ -114,14 +114,14 @@ export class Post extends Component {
                         <p className="description">Aspiring teacher</p>
                       </div>
 
-                      <div className="col-md-2">
+                      {/* <div className="col-md-2">
                         <button
                           type="button"
                           className="btn btn-danger pull-right btn-round"
                         >
                           Follow
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -138,7 +138,20 @@ export class Post extends Component {
     return (
       <Query query={POST_QUERY} variables={{ id: postTranslationId }}>
         {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
+          if (loading)
+            return (
+              <span
+                className="mx-auto"
+                style={{
+                  fontSize: 48,
+                  display: "block",
+                  width: 50,
+                  marginTop: 80
+                }}
+              >
+                <i className="fas fa-spinner fa-spin" />
+              </span>
+            );
           if (error) return <p>Error :(</p>;
 
           const post = data.post.postTranslations.find(
