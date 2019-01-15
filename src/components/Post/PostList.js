@@ -13,6 +13,7 @@ const POSTS_QUERY = gql`
         language
         title
         body
+        created_at
       }
     }
   }
@@ -32,13 +33,14 @@ export class PostList extends Component {
                 if (error) return <p>Error :(</p>;
 
                 return data.posts.map(({ postTranslations }) =>
-                  postTranslations.map(({ id, title, body }) => {
+                  postTranslations.map(({ id, title, body, created_at }) => {
                     return (
                       <PostListItem
                         key={id}
                         postId={id}
                         title={title}
                         body={body}
+                        created_at={created_at}
                       />
                     );
                   })

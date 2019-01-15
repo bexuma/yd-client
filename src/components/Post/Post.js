@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
-import Spinner from '../Spinner';
+import Spinner from "../Spinner";
 // import materialKit from '../../material-kit';
 
 const POST_QUERY = gql`
@@ -21,8 +21,10 @@ const POST_QUERY = gql`
 
 export class Post extends Component {
   renderPost = ({ id, language, title, body }) => {
-    const avatar =
+    const avatarFB =
       "https://scontent.fkgf1-1.fna.fbcdn.net/v/t1.0-1/p320x320/25591775_1798446113788839_8274713958521897995_n.jpg?_nc_cat=102&_nc_ht=scontent.fkgf1-1.fna&oh=d159d419b756cd8ded026395e5cacc9a&oe=5CCA3D1C";
+    const avatarLinkedIn =
+      "https://media.licdn.com/dms/image/C5103AQH1gkmiVhd-lw/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=1MoGtCyEFyDr8bPLpLEyPa30-RNz_Z_8cXtYNccNeO4";
     return (
       <div>
         <div
@@ -103,7 +105,7 @@ export class Post extends Component {
                           <a href="http://google.com">
                             <img
                               className="img"
-                              src={avatar}
+                              src={avatarLinkedIn}
                               alt="Bexultan Myrzatayev"
                             />
                           </a>
@@ -139,8 +141,7 @@ export class Post extends Component {
     return (
       <Query query={POST_QUERY} variables={{ id: postTranslationId }}>
         {({ loading, error, data }) => {
-          if (loading)
-            return <Spinner />
+          if (loading) return <Spinner />;
           if (error) return <p>Error :(</p>;
 
           const post = data.post.postTranslations.find(

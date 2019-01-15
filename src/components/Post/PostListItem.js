@@ -1,9 +1,11 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export default props => {
-  const { postId, title, body } = props;
+  const { postId, title, body, created_at } = props;
+  const postedTime = moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow();
   return (
     <div className="card card-plain card-blog">
       <div className="row">
@@ -32,11 +34,11 @@ export default props => {
             <Link to={`/posts/${postId}`}>{title}</Link>
           </h3>
 
-          <ReactMarkdown className="card-description" source={body} />
+          {/* <ReactMarkdown className="card-description" source={body} /> */}
 
           {/* <Link to={`/posts/${id}`}>Read More</Link> */}
 
-          <p className="author">by Bexultan, 2 days ago</p>
+          <p className="author">by Bexultan, {postedTime}</p>
         </div>
       </div>
     </div>
