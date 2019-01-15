@@ -8,8 +8,6 @@ import "./material-kit.css";
 
 import App from "./components/App";
 import Post from "./components/Post/Post";
-import PostCreate from "./components/Post/PostCreate";
-import PostUpdate from "./components/Post/PostUpdate";
 import Navbar from "./components/Navbar";
 
 const client = new ApolloClient({
@@ -23,10 +21,8 @@ ReactDOM.render(
         <Navbar />
 
         <Route exact path="/" component={App} />
-        <Route exact path="/new_post" component={PostCreate} />
         <Route exact path="/posts/:postTranslationId" component={Post} />
 
-        <Route exact path="/posts/:postTranslationId/update" component={PostUpdate} />
       </div>
     </Router>
   </ApolloProvider>,
