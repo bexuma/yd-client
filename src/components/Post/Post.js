@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
+import Spinner from '../Spinner';
 // import materialKit from '../../material-kit';
 
 const POST_QUERY = gql`
@@ -139,19 +140,7 @@ export class Post extends Component {
       <Query query={POST_QUERY} variables={{ id: postTranslationId }}>
         {({ loading, error, data }) => {
           if (loading)
-            return (
-              <span
-                className="mx-auto"
-                style={{
-                  fontSize: 48,
-                  display: "block",
-                  width: 50,
-                  marginTop: 80
-                }}
-              >
-                <i className="fas fa-spinner fa-spin" />
-              </span>
-            );
+            return <Spinner />
           if (error) return <p>Error :(</p>;
 
           const post = data.post.postTranslations.find(
