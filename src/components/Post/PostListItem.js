@@ -9,11 +9,13 @@ export default props => {
       <div className="row">
         <div className="col-md-4">
           <div className="card-header card-header-image">
-            <img
-              alt={title}
-              className="img img-raised"
-              src="img/card-blog4.jpg"
-            />
+            <Link to={`/posts/${postId}`}>
+              <img
+                alt={title}
+                className="img img-raised"
+                src="img/card-blog4.jpg"
+              />
+            </Link>
             <div
               className="colored-shadow"
               style={{
