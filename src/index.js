@@ -11,7 +11,7 @@ import Post from "./components/Post/Post";
 import Navbar from "./components/Navbar";
 
 const client = new ApolloClient({
-  uri: "https://youngdeveloper-backend.herokuapp.com/graphql"
+  uri: "https://tranquil-mesa-50557.herokuapp.com/graphql"
 });
 
 ReactDOM.render(
@@ -21,7 +21,7 @@ ReactDOM.render(
         <Navbar />
 
         <Route exact path="/" component={App} />
-        <Route exact path="/posts/:postTranslationId" component={Post} />
+        <Route exact path="/posts/:postId" component={Post} />
 
       </div>
     </Router>

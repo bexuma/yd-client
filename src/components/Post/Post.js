@@ -9,12 +9,11 @@ const POST_QUERY = gql`
   query Post($id: ID!) {
     post(id: $id) {
       id
-      postTranslations {
-        id
-        language
-        title
-        body
-      }
+      status
+      language
+      title
+      body
+      created_at
     }
   }
 `;
@@ -137,18 +136,14 @@ export class Post extends Component {
   };
 
   render() {
-    const { postTranslationId } = this.props.match.params;
+    const { postId } = this.props.match.params;
     return (
-      <Query query={POST_QUERY} variables={{ id: postTranslationId }}>
+      <Query query={POST_QUERY} variables={{ id: postId }}>
         {({ loading, error, data }) => {
           if (loading) return <Spinner />;
           if (error) return <p>Error :(</p>;
 
-          const post = data.post.postTranslations.find(
-            ({ language }) => language === "en"
-          );
-
-          return this.renderPost(post);
+          return this.renderPost(data.post);
         }}
       </Query>
     );

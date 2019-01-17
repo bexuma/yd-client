@@ -3,18 +3,17 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PostListItem from "./PostListItem";
-import Spinner from '../Spinner';
+import Spinner from "../Spinner";
 
 const POSTS_QUERY = gql`
   {
     posts {
-      postTranslations {
-        id
-        language
-        title
-        body
-        created_at
-      }
+      id
+      status
+      language
+      title
+      body
+      created_at
     }
   }
 `;
@@ -28,23 +27,20 @@ export class PostList extends Component {
             <h2 className="title">Latest Blogposts</h2>
             <Query query={POSTS_QUERY}>
               {({ loading, error, data }) => {
-                if (loading)
-                  return <Spinner />
+                if (loading) return <Spinner />;
                 if (error) return <p>Error :(</p>;
 
-                return data.posts.map(({ postTranslations }) =>
-                  postTranslations.map(({ id, title, body, created_at }) => {
-                    return (
-                      <PostListItem
-                        key={id}
-                        postId={id}
-                        title={title}
-                        body={body}
-                        created_at={created_at}
-                      />
-                    );
-                  })
-                );
+                return data.posts.map(({ id, title, body, created_at }) => {
+                  return (
+                    <PostListItem
+                      key={id}
+                      postId={id}
+                      title={title}
+                      body={body}
+                      created_at={created_at}
+                    />
+                  );
+                });
               }}
             </Query>
           </div>
