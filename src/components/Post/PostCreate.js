@@ -2,39 +2,30 @@ import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
-const POST_UPDATE_MUTATION = gql`
-  mutation PostUpdateMutation(
-    $postId: ID!
-    $status: Status!
+const POST_CREATE_MUTATION = gql`
+  mutation PostCreateMutation(
     $language: Language!
     $title: String!
     $body: String!
   ) {
-    postUpdate(
-      postId: $postId
-      status: $status
-      language: $language
-      title: $title
-      body: $body
-    ) {
+    postCreate(language: $language, title: $title, body: $body) {
       id
+      postedBy {
+        email
+      }
     }
   }
 `;
 
-export class Form extends Component {
-  constructor(props) {
-    super(props);
-    const { id, status, language, title, body } = props.post;
-    this.state = {
-      id,
-      status,
-      language,
-      title,
-      body,
-      isPublished: (status === "published") ? true : false
+export class PostCreate extends Component {
+  state = {
+      isPublished: false,
+      status: "draft",
+      language: "en",
+      title: "",
+      body: ""
     };
-  }
+
 
   handleStatusChange = () => {
     const { isPublished } = this.state;
@@ -47,7 +38,6 @@ export class Form extends Component {
 
   render() {
     const { isPublished, status, language, title, body } = this.state;
-    const postId = this.state.id;
     return (
       <div className="container">
         <div className="row">
@@ -67,7 +57,7 @@ export class Form extends Component {
                 className="form-control"
                 value={body}
                 onChange={e => this.setState({ body: e.target.value })}
-                rows="25"
+                rows="22"
                 placeholder="You can write your text here..."
               />
             </div>
@@ -86,17 +76,17 @@ export class Form extends Component {
             </div>
 
             <Mutation
-              mutation={POST_UPDATE_MUTATION}
-              variables={{ postId, status, language, title, body }}
+              mutation={POST_CREATE_MUTATION}
+              variables={{ status, language, title, body }}
               onCompleted={() => console.log("HAHAHAH")}
             >
-              {postUpdateMutation => (
+              {createPostMutation => (
                 <button
-                  onClick={postUpdateMutation}
+                  onClick={createPostMutation}
                   className="btn btn-info btn-lg"
                   disabled={!title || !body}
                 >
-                  Update Post
+                  Create Post
                 </button>
               )}
             </Mutation>
@@ -107,4 +97,4 @@ export class Form extends Component {
   }
 }
 
-export default Form;
+export default PostCreate;

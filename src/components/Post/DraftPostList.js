@@ -5,19 +5,6 @@ import gql from "graphql-tag";
 import PostListItem from "./PostListItem";
 import Spinner from "../Spinner";
 
-const PUBLISHED_POSTS_QUERY = gql`
-  {
-    publishedPosts {
-      id
-      status
-      language
-      title
-      body
-      created_at
-    }
-  }
-`;
-
 const DRAFT_POSTS_QUERY = gql`
   {
     draftPosts {
@@ -31,23 +18,24 @@ const DRAFT_POSTS_QUERY = gql`
   }
 `;
 
-export class PostList extends Component {
+export class DraftPostList extends Component {
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-10 ml-auto mr-auto">
             <h2 className="title">Latest Blogposts</h2>
-            <Query query={PUBLISHED_POSTS_QUERY}>
+            <Query query={DRAFT_POSTS_QUERY}>
               {({ loading, error, data }) => {
                 if (loading) return <Spinner />;
                 if (error) return <p>Error :(</p>;
 
-                return data.publishedPosts.map(
-                  ({ id, title, body, created_at }) => (
+                return data.draftPosts.map(
+                  ({ id, status, title, body, created_at }) => (
                     <PostListItem
                       key={id}
                       postId={id}
+                      status={status}
                       title={title}
                       body={body}
                       created_at={created_at}
@@ -63,4 +51,4 @@ export class PostList extends Component {
   }
 }
 
-export default PostList;
+export default DraftPostList;

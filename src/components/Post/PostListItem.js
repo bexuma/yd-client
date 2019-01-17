@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default props => {
-  const { postId, title, body, created_at } = props;
+  const { postId, title, status, created_at } = props;
   const postedTime = moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow();
   return (
     <div className="card card-plain card-blog">
@@ -38,7 +38,12 @@ export default props => {
 
           {/* <Link to={`/posts/${id}`}>Read More</Link> */}
 
-          <p className="author">by Bexultan, {postedTime}</p>
+          <p className="author">
+            {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
+              <b>{status + " "}</b>
+            ) : null}
+            by Bexultan, {postedTime}
+          </p>
         </div>
       </div>
     </div>
