@@ -23,3 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .netlify/
+
+/src/components/Post/PostCreate
+/src/components/Post/PostUpdate
+/src/components/Post/DraftPostList
