@@ -23,7 +23,7 @@ const postCRUD = () => {
       <div>
         <Route exact path="/drafts" component={DraftPostList} />
         <Route exact path="/new_post" component={PostCreate} />
-        <Route exact path="/posts/:postId/edit" component={PostUpdate} />
+        <Route exact path="/posts/:postSlug/edit" component={PostUpdate} />
       </div>
     );
   }
@@ -36,7 +36,7 @@ ReactDOM.render(
         <Navbar />
 
         <Route exact path="/" component={PostList} />
-        <Route exact path="/posts/:postId" component={Post} />
+        <Route exact path="/posts/:postSlug" component={Post} />
 
         {postCRUD()}
       </div>

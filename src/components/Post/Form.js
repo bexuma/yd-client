@@ -4,20 +4,20 @@ import { Mutation } from "react-apollo";
 
 const POST_UPDATE_MUTATION = gql`
   mutation PostUpdateMutation(
-    $postId: ID!
+    $id: ID!
     $status: Status!
     $language: Language!
     $title: String!
     $body: String!
   ) {
     postUpdate(
-      postId: $postId
+      id: $id
       status: $status
       language: $language
       title: $title
       body: $body
     ) {
-      id
+      slug
     }
   }
 `;
@@ -46,8 +46,7 @@ export class Form extends Component {
   };
 
   render() {
-    const { isPublished, status, language, title, body } = this.state;
-    const postId = this.state.id;
+    const { id, isPublished, status, language, title, body } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -87,8 +86,8 @@ export class Form extends Component {
 
             <Mutation
               mutation={POST_UPDATE_MUTATION}
-              variables={{ postId, status, language, title, body }}
-              onCompleted={() => this.props.push(`/posts/${postId}/`)}
+              variables={{ id, status, language, title, body }}
+              onCompleted={({ postUpdate }) => this.props.push(`/posts/${postUpdate.slug}`)}
             >
               {postUpdateMutation => (
                 <button

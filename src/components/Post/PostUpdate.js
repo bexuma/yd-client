@@ -5,25 +5,26 @@ import Form from './Form';
 import Spinner from '../Spinner';
 
 const POST_QUERY = gql`
-  query Post($id: ID!) {
-    post(id: $id) {
+  query Post($postSlug: String!) {
+    post(postSlug: $postSlug) {
       id
       status
       language
       title
       body
+      slug
     }
   }
 `;
 
 export class PostUpdate extends Component {
   render() {
-    const { postId } = this.props.match.params;
+    const { postSlug } = this.props.match.params;
     
     return (
       <Query
         query={POST_QUERY}
-        variables={{ id: postId }}
+        variables={{ postSlug }}
       >
         {({ loading, error, data }) => {
           if (loading) return <Spinner />;

@@ -9,10 +9,7 @@ const POST_CREATE_MUTATION = gql`
     $body: String!
   ) {
     postCreate(language: $language, title: $title, body: $body) {
-      id
-      postedBy {
-        email
-      }
+      slug
     }
   }
 `;
@@ -78,7 +75,7 @@ export class PostCreate extends Component {
             <Mutation
               mutation={POST_CREATE_MUTATION}
               variables={{ status, language, title, body }}
-              onCompleted={() => console.log("HAHAHAH")}
+              onCompleted={({ postCreate }) => this.props.history.push(`/posts/${postCreate.slug}`)}
             >
               {createPostMutation => (
                 <button

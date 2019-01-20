@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 // import materialKit from '../../material-kit';
 
 const POST_QUERY = gql`
-  query Post($id: ID!) {
-    post(id: $id) {
+  query Post($postSlug: String!) {
+    post(postSlug: $postSlug) {
       id
+      slug
       status
       language
       title
@@ -20,7 +21,7 @@ const POST_QUERY = gql`
 `;
 
 export class Post extends Component {
-  renderPost = ({ id, language, title, body }) => {
+  renderPost = ({ slug, language, title, body }) => {
     const avatarLinkedIn =
       "https://media.licdn.com/dms/image/C5103AQH1gkmiVhd-lw/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=1MoGtCyEFyDr8bPLpLEyPa30-RNz_Z_8cXtYNccNeO4";
     return (
@@ -59,7 +60,7 @@ export class Post extends Component {
                 />
                 {!process.env.NODE_ENV ||
                 process.env.NODE_ENV === "development" ? (
-                  <Link to={`/posts/${id}/edit`}>Edit</Link>
+                  <Link to={`/posts/${slug}/edit`}>Edit</Link>
                 ) : null}
               </div>
             </div>
@@ -139,14 +140,18 @@ export class Post extends Component {
   };
 
   render() {
-    const { postId } = this.props.match.params;
+    const { postSlug } = this.props.match.params;
     return (
-      <Query query={POST_QUERY} variables={{ id: postId }}>
+      <Query query={POST_QUERY} variables={{ postSlug }}>
         {({ loading, error, data }) => {
           if (loading) return <Spinner />;
           if (error) return <p>Error :(</p>;
 
-          return this.renderPost(data.post);
+          return !data.post ? (
+            <p>Post cannot load</p>
+          ) : (
+            this.renderPost(data.post)
+          );
         }}
       </Query>
     );
