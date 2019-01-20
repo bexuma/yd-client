@@ -32,7 +32,7 @@ export class Form extends Component {
       language,
       title,
       body,
-      isPublished: (status === "published") ? true : false
+      isPublished: status === "published" ? true : false
     };
   }
 
@@ -43,7 +43,7 @@ export class Form extends Component {
       isPublished: !isPublished,
       status: isPublished ? "draft" : "published"
     });
-  }
+  };
 
   render() {
     const { isPublished, status, language, title, body } = this.state;
@@ -72,7 +72,7 @@ export class Form extends Component {
               />
             </div>
 
-            <div className="togglebutton" style={{marginBottom: 12}}>
+            <div className="togglebutton" style={{ marginBottom: 12 }}>
               <label>
                 <input
                   name="status"
@@ -88,7 +88,7 @@ export class Form extends Component {
             <Mutation
               mutation={POST_UPDATE_MUTATION}
               variables={{ postId, status, language, title, body }}
-              onCompleted={() => console.log("HAHAHAH")}
+              onCompleted={() => this.props.push(`/posts/${postId}/`)}
             >
               {postUpdateMutation => (
                 <button

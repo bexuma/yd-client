@@ -19,6 +19,7 @@ const POST_QUERY = gql`
 export class PostUpdate extends Component {
   render() {
     const { postId } = this.props.match.params;
+    
     return (
       <Query
         query={POST_QUERY}
@@ -28,7 +29,7 @@ export class PostUpdate extends Component {
           if (loading) return <Spinner />;
           if (error) return <p>Error :(</p>;
 
-          return <Form post={data.post} />
+          return <Form post={data.post} push={this.props.history.push} />
         }}
       </Query>
     );

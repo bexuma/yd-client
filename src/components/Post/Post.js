@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
 import Spinner from "../Spinner";
+import { Link } from "react-router-dom";
 // import materialKit from '../../material-kit';
 
 const POST_QUERY = gql`
@@ -20,8 +21,6 @@ const POST_QUERY = gql`
 
 export class Post extends Component {
   renderPost = ({ id, language, title, body }) => {
-    const avatarFB =
-      "https://scontent.fkgf1-1.fna.fbcdn.net/v/t1.0-1/p320x320/25591775_1798446113788839_8274713958521897995_n.jpg?_nc_cat=102&_nc_ht=scontent.fkgf1-1.fna&oh=d159d419b756cd8ded026395e5cacc9a&oe=5CCA3D1C";
     const avatarLinkedIn =
       "https://media.licdn.com/dms/image/C5103AQH1gkmiVhd-lw/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=1MoGtCyEFyDr8bPLpLEyPa30-RNz_Z_8cXtYNccNeO4";
     return (
@@ -58,6 +57,10 @@ export class Post extends Component {
                   className="col-md-8 ml-auto mr-auto"
                   source={body}
                 />
+                {!process.env.NODE_ENV ||
+                process.env.NODE_ENV === "development" ? (
+                  <Link to={`/posts/${id}/edit`}>Edit</Link>
+                ) : null}
               </div>
             </div>
 
