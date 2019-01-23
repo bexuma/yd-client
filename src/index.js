@@ -4,12 +4,13 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import PostCreate from './components/Post/PostCreate'
-import PostUpdate from './components/Post/PostUpdate'
+import PostCreate from "./components/Post/PostCreate";
+import PostUpdate from "./components/Post/PostUpdate";
 import Post from "./components/Post/Post";
 import Navbar from "./components/Navbar";
 import PostList from "./components/Post/PostList";
 import DraftPostList from "./components/Post/DraftPostList";
+import About from "./components/About";
 
 import "./material-kit.css";
 
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Navbar />
 
         <Route exact path="/" component={PostList} />
+        <Route exact path="/about-bexultan" component={About} />
         <Route exact path="/posts/:postSlug" component={Post} />
 
         {postCRUD()}
