@@ -25,23 +25,39 @@ export class PostList extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-10 ml-auto mr-auto">
-            <h2 className="title">Latest Blogposts</h2>
             <Query query={PUBLISHED_POSTS_QUERY}>
               {({ loading, error, data }) => {
                 if (loading) return <Spinner />;
                 if (error) return <p>Error :(</p>;
 
-                return data.publishedPosts.map(
-                  ({ id, title, body, slug, created_at }) => (
-                    <PostListItem
-                      key={id}
-                      slug={slug}
-                      postId={id}
-                      title={title}
-                      body={body}
-                      created_at={created_at}
-                    />
-                  )
+                if (
+                  !Array.isArray(data.publishedPosts) ||
+                  !data.publishedPosts.length
+                ) {
+                  return (
+                    <div>
+                      <h2>Bexultan is hardly working on his first blog post</h2>
+                      <h4 style={{ fontSize: "1.5rem" }}>Be patient!</h4>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div>
+                    <h2 className="title">Latest Blogposts</h2>
+                    {data.publishedPosts.map(
+                      ({ id, title, body, slug, created_at }) => (
+                        <PostListItem
+                          key={id}
+                          slug={slug}
+                          postId={id}
+                          title={title}
+                          body={body}
+                          created_at={created_at}
+                        />
+                      )
+                    )}
+                  </div>
                 );
               }}
             </Query>
