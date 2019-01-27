@@ -12,6 +12,7 @@ const POST_QUERY = gql`
       language
       title
       body
+      imageUrl
       slug
     }
   }

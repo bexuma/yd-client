@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default props => {
-  const { slug, title, status, created_at } = props;
+  const { slug, title, status, imageUrl, created_at } = props;
   const postedTime = moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow();
+  console.log(imageUrl);
   return (
     <div className="card card-plain card-blog">
       <div className="row">
@@ -14,13 +15,13 @@ export default props => {
               <img
                 alt={title}
                 className="img img-raised"
-                src="img/card-blog4.jpg"
+                src={imageUrl ? imageUrl : "img/card-blog4.jpg"}
               />
             </Link>
             <div
               className="colored-shadow"
               style={{
-                backgroundImage: "url(img/card-blog4.jpg)",
+                backgroundColor: "#ffffff",
                 opacity: 1
               }}
             />

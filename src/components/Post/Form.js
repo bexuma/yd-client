@@ -9,6 +9,7 @@ const POST_UPDATE_MUTATION = gql`
     $language: Language!
     $title: String!
     $body: String!
+    $imageUrl: String!
   ) {
     postUpdate(
       id: $id
@@ -16,6 +17,7 @@ const POST_UPDATE_MUTATION = gql`
       language: $language
       title: $title
       body: $body
+      imageUrl: $imageUrl
     ) {
       slug
     }
@@ -25,13 +27,14 @@ const POST_UPDATE_MUTATION = gql`
 export class Form extends Component {
   constructor(props) {
     super(props);
-    const { id, status, language, title, body } = props.post;
+    const { id, status, language, title, body, imageUrl } = props.post;
     this.state = {
       id,
       status,
       language,
       title,
       body,
+      imageUrl,
       isPublished: status === "published" ? true : false
     };
   }
@@ -46,11 +49,21 @@ export class Form extends Component {
   };
 
   render() {
-    const { id, isPublished, status, language, title, body } = this.state;
+    const { id, isPublished, status, language, title, body, imageUrl } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-8">
+          <div className="form-group has-default bmd-form-group">
+              <input
+                className="form-control"
+                value={imageUrl}
+                onChange={e => this.setState({ imageUrl: e.target.value })}
+                type="text"
+                placeholder="Post image url"
+              />
+            </div>
+
             <div className="form-group has-default bmd-form-group">
               <input
                 className="form-control"
@@ -86,7 +99,7 @@ export class Form extends Component {
 
             <Mutation
               mutation={POST_UPDATE_MUTATION}
-              variables={{ id, status, language, title, body }}
+              variables={{ id, status, language, title, body, imageUrl }}
               onCompleted={({ postUpdate }) => this.props.push(`/posts/${postUpdate.slug}`)}
             >
               {postUpdateMutation => (

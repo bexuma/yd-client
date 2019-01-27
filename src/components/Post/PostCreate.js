@@ -7,8 +7,9 @@ const POST_CREATE_MUTATION = gql`
     $language: Language!
     $title: String!
     $body: String!
+    $imageUrl: String!
   ) {
-    postCreate(language: $language, title: $title, body: $body) {
+    postCreate(language: $language, title: $title, body: $body, imageUrl: $imageUrl) {
       slug
     }
   }
@@ -20,7 +21,8 @@ export class PostCreate extends Component {
       status: "draft",
       language: "en",
       title: "",
-      body: ""
+      body: "",
+      imageUrl: ""
     };
 
 
@@ -34,11 +36,21 @@ export class PostCreate extends Component {
   }
 
   render() {
-    const { isPublished, status, language, title, body } = this.state;
+    const { isPublished, status, language, title, body, imageUrl } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-8">
+          <div className="form-group has-default bmd-form-group">
+              <input
+                className="form-control"
+                value={imageUrl}
+                onChange={e => this.setState({ imageUrl: e.target.value })}
+                type="text"
+                placeholder="Post image url"
+              />
+            </div>
+
             <div className="form-group has-default bmd-form-group">
               <input
                 className="form-control"
@@ -74,14 +86,14 @@ export class PostCreate extends Component {
 
             <Mutation
               mutation={POST_CREATE_MUTATION}
-              variables={{ status, language, title, body }}
+              variables={{ status, language, title, body, imageUrl }}
               onCompleted={({ postCreate }) => this.props.history.push(`/posts/${postCreate.slug}`)}
             >
               {createPostMutation => (
                 <button
                   onClick={createPostMutation}
                   className="btn btn-info btn-lg"
-                  disabled={!title || !body}
+                  disabled={!title || !body || !imageUrl}
                 >
                   Create Post
                 </button>

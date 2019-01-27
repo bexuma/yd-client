@@ -14,6 +14,7 @@ const DRAFT_POSTS_QUERY = gql`
       language
       title
       body
+      imageUrl
       created_at
     }
   }
@@ -32,13 +33,14 @@ export class DraftPostList extends Component {
                 if (error) return <p>Error :(</p>;
 
                 return data.draftPosts.map(
-                  ({ id, slug, status, title, body, created_at }) => (
+                  ({ id, slug, status, title, body, imageUrl, created_at }) => (
                     <PostListItem
                       key={id}
                       slug={slug}
                       status={status}
                       title={title}
                       body={body}
+                      imageUrl={imageUrl}
                       created_at={created_at}
                     />
                   )

@@ -4,12 +4,13 @@ import logo from "../young_developer_logo.png";
 
 export default () => {
   const icons = {
-    "fa-facebook-f": "https://www.facebook.com/youngdevelops",
-    "fa-vk": "https://vk.com/youngdevelops",
-    "fa-youtube": "https://www.youtube.com/channel/UCyPpl_gRz1j_xWbVP5SanlQ",
-    "fa-twitter": "https://twitter.com/youngdevelops",
-    "fa-instagram": "https://www.instagram.com/youngdevelops/",
-    "fa-github": "https://github.com/youngdeveloper-co"
+    "facebook-f": "https://www.facebook.com/youngdevelops",
+    vk: "https://vk.com/youngdevelops",
+    youtube: "https://www.youtube.com/channel/UCyPpl_gRz1j_xWbVP5SanlQ",
+    twitter: "https://twitter.com/youngdevelops",
+    instagram: "https://www.instagram.com/youngdevelops/",
+    github: "https://github.com/youngdeveloper-co",
+    "linkedin-in": "https://www.linkedin.com/in/bexuma/"
   };
 
   return (
@@ -45,7 +46,7 @@ export default () => {
                     target="_blank"
                     style={{ fontSize: 24, color: "#00b0cc" }}
                   >
-                    <i className={`fab ${icon[0]}`} />
+                    <i className={`fab fa-${icon[0]}`} />
                   </a>
                 </li>
               );

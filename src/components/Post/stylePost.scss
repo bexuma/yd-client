@@ -31,6 +31,37 @@ $screen-md-min: 992px;
 $screen-md-max: 1199px;
 $screen-lg-min: 1200px;
 
+
+.postContainer {
+  h1 {
+    margin-bottom: 5px !important;
+  }
+}
+
+.postBody {
+  p {
+    font-size: 21px;
+    font-family: 'PT Serif', serif;
+    line-height: 1.38;
+    letter-spacing: -0.011em;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  img + p {
+    margin-top: 20px;
+  }
+
+  pre {
+    margin-bottom: 20px;
+  }
+
+}
+
 .post-body {
   padding-top: 25px;
   margin-bottom: 7px;

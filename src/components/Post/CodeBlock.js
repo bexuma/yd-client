@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/styles/hljs';
+import {agate} from 'react-syntax-highlighter/dist/styles/hljs';
 
 export default class CodeBlock extends React.PureComponent {
   static propTypes = {
@@ -17,7 +17,7 @@ export default class CodeBlock extends React.PureComponent {
     const { language, value } = this.props;
 
     return (
-      <SyntaxHighlighter language={language} style={dracula}>
+      <SyntaxHighlighter language={language} style={agate}>
         {value}
       </SyntaxHighlighter>
     );
