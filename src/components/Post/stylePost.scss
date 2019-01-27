@@ -34,18 +34,32 @@ $screen-lg-min: 1200px;
 
 .postContainer {
   h1 {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0;
+    font-size: 40px;
     margin-bottom: 5px !important;
   }
 }
 
 .postBody {
+  h3 {
+    font-weight: 600;
+    font-size: 28px;
+  }
+
   p {
-    font-size: 21px;
+    font-size: 18px;
     font-family: 'PT Serif', serif;
-    line-height: 1.38;
-    letter-spacing: -0.011em;
+    line-height: 1.43;
+    letter-spacing: -0.005em;
     font-weight: 400;
     font-style: normal;
+  }
+
+  p + h3 {
+    margin-top: 40px;
   }
 
   img {
@@ -54,6 +68,10 @@ $screen-lg-min: 1200px;
 
   img + p {
     margin-top: 20px;
+  }
+
+  p + pre {
+    margin-top: 20px !important;
   }
 
   pre {

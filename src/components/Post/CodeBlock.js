@@ -1,25 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {agate} from 'react-syntax-highlighter/dist/styles/hljs';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import coy from "react-syntax-highlighter/dist/styles/prism/coy";
 
-export default class CodeBlock extends React.PureComponent {
+class CodeBlock extends PureComponent {
   static propTypes = {
     value: PropTypes.string.isRequired,
-    language: PropTypes.string,
-  }
+    language: PropTypes.string
+  };
 
   static defaultProps = {
-    language: null,
-  }
+    language: null
+  };
 
   render() {
     const { language, value } = this.props;
 
     return (
-      <SyntaxHighlighter language={language} style={agate}>
+      <SyntaxHighlighter language={language} style={coy}>
         {value}
       </SyntaxHighlighter>
     );
   }
 }
+
+export default CodeBlock;

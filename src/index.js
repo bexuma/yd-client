@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import PostCreate from "./components/Post/PostCreate";
 import PostUpdate from "./components/Post/PostUpdate";
-import Post from "./components/Post/Post";
+import Post from "./components/Post/PostContainer";
 import Navbar from "./components/Navbar";
 import PostList from "./components/Post/PostList";
 import DraftPostList from "./components/Post/DraftPostList";

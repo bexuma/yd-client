@@ -9,19 +9,7 @@ const PUBLISHED_POSTS_QUERY = gql`
   {
     publishedPosts {
       id
-      status
-      language
-      title
-      body
-      created_at
-    }
-  }
-`;
-
-const DRAFT_POSTS_QUERY = gql`
-  {
-    draftPosts {
-      id
+      slug
       status
       language
       title
@@ -44,9 +32,10 @@ export class PostList extends Component {
                 if (error) return <p>Error :(</p>;
 
                 return data.publishedPosts.map(
-                  ({ id, title, body, created_at }) => (
+                  ({ id, title, body, slug, created_at }) => (
                     <PostListItem
                       key={id}
+                      slug={slug}
                       postId={id}
                       title={title}
                       body={body}
