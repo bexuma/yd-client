@@ -45,12 +45,16 @@ export class Post extends Component {
               /> */}
 
             <ReactMarkdown
+              escapeHtml={false}
               source={body}
               renderers={{ code: CodeBlock, paragraph: this.renderParagraph }}
               className="postBody"
             />
 
-            <h4 className="card-title">Bexultan Myrzatayev</h4>
+            <h4 style={{ paddingBottom: 20 }}>
+              Post has been written by{" "}
+              <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
+            </h4>
           </div>
           {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
             <div className="col-md-2">
