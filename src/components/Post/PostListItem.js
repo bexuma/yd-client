@@ -29,7 +29,7 @@ export default props => {
         </div>
 
         <div className="col-md-8" style={{ whiteSpace: "pre-line" }}>
-          <h6 className="card-category text-info">Ruby on Rails</h6>
+          <h6 className="card-category text-info">React.js</h6>
           <h3 className="card-title">
             <Link to={`/posts/${slug}`}>{title}</Link>
           </h3>

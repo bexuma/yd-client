@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PostListItem from "./PostListItem";
 import Spinner from "../Spinner";
+import { siteTitle } from "../constants";
 
 const PUBLISHED_POSTS_QUERY = gql`
   {
@@ -21,6 +22,10 @@ const PUBLISHED_POSTS_QUERY = gql`
 `;
 
 export class PostList extends Component {
+  componentDidMount() {
+    document.title = siteTitle;
+  }
+
   render() {
     return (
       <div className="container">
