@@ -14,6 +14,7 @@ const PUBLISHED_POSTS_QUERY = gql`
       language
       title
       body
+      imageUrl
       created_at
     }
   }
@@ -46,13 +47,23 @@ export class PostList extends Component {
                   <div>
                     <h2 className="title">Latest Blogposts</h2>
                     {data.publishedPosts.map(
-                      ({ id, title, body, slug, created_at }) => (
+                      ({
+                        id,
+                        title,
+                        body,
+                        imageUrl,
+                        slug,
+                        status,
+                        created_at
+                      }) => (
                         <PostListItem
                           key={id}
                           slug={slug}
                           postId={id}
                           title={title}
                           body={body}
+                          imageUrl={imageUrl}
+                          status={status}
                           created_at={created_at}
                         />
                       )

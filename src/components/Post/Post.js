@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import CodeBlock from "./CodeBlock";
 import "./stylePost.scss";
+import { imageNotFound } from "../constants";
 
 export class Post extends Component {
   componentDidMount() {
@@ -38,11 +39,11 @@ export class Post extends Component {
           >
             <h1 style={{ marginBottom: 10 }}>{title}</h1>
 
-            {/* <img
-                alt={title}
-                style={{width: "100%"}}
-                src={imageUrl ? imageUrl : "img/card-blog4.jpg"}
-              /> */}
+            <img
+              alt={title}
+              style={{ width: "100%" }}
+              src={imageUrl ? imageUrl : imageNotFound}
+            />
 
             <ReactMarkdown
               escapeHtml={false}
@@ -51,7 +52,7 @@ export class Post extends Component {
               className="postBody"
             />
 
-            <h4 style={{ paddingBottom: 20 }}>
+            <h4 style={{ paddingBottom: 40 }}>
               Post has been written by{" "}
               <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
             </h4>

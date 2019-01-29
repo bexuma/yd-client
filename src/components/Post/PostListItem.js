@@ -39,10 +39,7 @@ export default props => {
           {/* <Link to={`/posts/${id}`}>Read More</Link> */}
 
           <p className="author">
-            {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
-              <b>{status + " "}</b>
-            ) : null}
-            by Bexultan, {postedTime}
+            <b>{status + " "}</b> by Bexultan, {postedTime}
           </p>
         </div>
       </div>
