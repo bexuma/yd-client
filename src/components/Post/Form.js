@@ -19,7 +19,12 @@ const POST_UPDATE_MUTATION = gql`
       body: $body
       imageUrl: $imageUrl
     ) {
+      id
       slug
+      status
+      title
+      body
+      imageUrl
     }
   }
 `;
@@ -49,12 +54,20 @@ export class Form extends Component {
   };
 
   render() {
-    const { id, isPublished, status, language, title, body, imageUrl } = this.state;
+    const {
+      id,
+      isPublished,
+      status,
+      language,
+      title,
+      body,
+      imageUrl
+    } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-8">
-          <div className="form-group has-default bmd-form-group">
+            <div className="form-group has-default bmd-form-group">
               <input
                 className="form-control"
                 value={imageUrl}
@@ -100,17 +113,22 @@ export class Form extends Component {
             <Mutation
               mutation={POST_UPDATE_MUTATION}
               variables={{ id, status, language, title, body, imageUrl }}
-              onCompleted={({ postUpdate }) => this.props.push(`/posts/${postUpdate.slug}`)}
+              onCompleted={({ postUpdate }) =>
+                this.props.push(`/posts/${postUpdate.slug}`)
+              }
             >
-              {postUpdateMutation => (
-                <button
-                  onClick={postUpdateMutation}
-                  className="btn btn-info btn-lg"
-                  disabled={!title || !body}
-                >
-                  Update Post
-                </button>
-              )}
+              {postUpdateMutation => {
+                console.log(postUpdateMutation);
+                return (
+                  <button
+                    onClick={postUpdateMutation}
+                    className="btn btn-info btn-lg"
+                    disabled={!title || !body}
+                  >
+                    Update Post
+                  </button>
+                );
+              }}
             </Mutation>
           </div>
         </div>
