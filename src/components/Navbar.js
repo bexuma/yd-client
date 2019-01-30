@@ -24,7 +24,6 @@ export default () => {
           <img src={logo} width="191" height="52" alt="fff" />
         </Link>
         
-
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
             {Object.entries(icons).map((icon, index) => {
