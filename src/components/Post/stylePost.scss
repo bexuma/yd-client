@@ -100,9 +100,19 @@ $screen-lg-min: 1200px;
   }
 
   pre {
+    overflow: auto !important;
+    -ms-word-wrap: normal !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+    white-space: pre !important;
+  }
+
+  pre {
     margin-bottom: 18px !important;
     background-color: #f6fbfc !important;
     padding: 10px !important;
+
+    white-space: pre-line;
   }
 
   hr + pre {
@@ -211,6 +221,13 @@ select.form-control:focus::-ms-value {
     h1 {
       font-size: 34px;
     }
+
+    blockquote {
+      padding-left: 30px;
+      p {
+        font-size: 18px;
+      }
+    }
   }
 }
 
@@ -223,9 +240,6 @@ select.form-control:focus::-ms-value {
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
   .postContainer {
     width: 725px;
-  }
-  p {
-    color: blue !important;
   }
 }
 
