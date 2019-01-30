@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|PT+Serif|Open+Sans:400italic");
+
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+.title {
+  color: #3c4858;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  margin-top: 30px;
+  min-height: 32px;
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.5em;
+
+  display: block;
+  text-align: left;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.card-blog {
+  margin-top: 60px;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, 0.87);
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  font-size: 0.875rem;
+}
+
+.card-header-image {
+  position: relative;
+  padding: 0;
+  z-index: 1;
+  border-radius: 6px;
+  margin: 0 !important;
+  color: #fff;
+  background: linear-gradient(60deg, #eee, #bdbdbd);
+}
+
+.card-blog [class*="col-"] .card-header-image img {
+  width: 100%;
+}
+
+.colored-shadow {
+  transform: scale(0.94);
+  top: 12px;
+
+  filter: blur(12px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -1;
+
+  transition: opacity 0.45s;
+}
+
+.card-category {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.text-info {
+  color: #00bcd4 !important;
+}
+
+h6 {
+  display: block;
+
+  margin-block-start: 2.33em;
+  margin-block-end: 2.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.card-category.text-info h6 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.card-title {
+  margin-top: 0.625rem;
+  color: #3c4858;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  margin-bottom: 0.75rem;
+}
+
+.card-title a {
+  color: inherit;
+}
+
+.card-title a:hover {
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 1.5625rem;
+  line-height: 1.4em;
+  display: block;
+
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+p.author {
+  font-size: 14px;
+  margin: 0 0 10px;
+  color: rgba(0, 0, 0, 0.87);
+}

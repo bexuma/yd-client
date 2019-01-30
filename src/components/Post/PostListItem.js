@@ -7,10 +7,10 @@ export default props => {
   const postedTime = moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow();
   console.log(imageUrl);
   return (
-    <div className="card card-plain card-blog">
+    <div className="card-blog">
       <div className="row">
         <div className="col-md-4">
-          <div className="card-header card-header-image">
+          <div className="card-header-image">
             <Link to={`/posts/${slug}`}>
               <img
                 alt={title}

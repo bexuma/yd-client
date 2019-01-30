@@ -52,10 +52,10 @@ export class Post extends Component {
               className="postBody"
             />
 
-            <h4 style={{ paddingBottom: 40 }}>
+            <p style={{ paddingBottom: 40 }}>
               Post has been written by{" "}
               <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
-            </h4>
+            </p>
           </div>
           {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
             <div className="col-md-2">

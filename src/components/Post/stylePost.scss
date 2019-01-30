@@ -5,24 +5,15 @@ $ruby-on-rails-red: #c00;
 $logo-blue: #27c3db;
 
 $blue: #bbdefb;
-// 50
-$blue-light: #e3f2fd;
-// 100
-$blue-100: #bbdefb;
-// 200
-$blue-200: #90caf9;
-// 300
-$blue-300: #64b5f6;
-// 400
-$blue-400: #42a5f5;
-// 500
-$blue-500: #2196f3;
-// 600
-$blue-600: #1e88e5;
-// 700
-$blue-700: #1976d2;
-// 800
-$blue-800: #1565c0;
+$blue-light: #e3f2fd; // 50
+$blue-100: #bbdefb; // 100
+$blue-200: #90caf9; // 200
+$blue-300: #64b5f6; // 300
+$blue-400: #42a5f5; // 400
+$blue-500: #2196f3; // 500
+$blue-600: #1e88e5; // 600
+$blue-700: #1976d2; // 700
+$blue-800: #1565c0; // 800
 
 $screen-xs-max: 767px;
 $screen-sm-min: 768px;
@@ -33,6 +24,7 @@ $screen-lg-min: 1200px;
 
 .postContainer {
   h1 {
+    margin-top: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.25;
@@ -90,7 +82,7 @@ $screen-lg-min: 1200px;
 
   pre {
     margin-bottom: 18px !important;
-    background-color: #F6FBFC !important;
+    background-color: #f6fbfc !important;
     padding: 10px !important;
   }
 
