@@ -6,6 +6,23 @@ body {
   line-height: 1.5em;
 }
 
+.form-group.bmd-form-group {
+  padding-top: 0px;
+  margin-bottom: 12px;
+}
+
+/* 
+nav.navbar {
+  border: 0;
+  border-radius: 3px;
+  padding: 0.625rem 0;
+  margin-bottom: 0px;
+  color: #555;
+  background-color: #fff !important;
+  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+    0 7px 10px -5px rgba(0, 0, 0, 0.15);
+}
+
 .title {
   color: #3c4858;
   text-decoration: none;
@@ -137,4 +154,4 @@ p.author {
   font-size: 14px;
   margin: 0 0 10px;
   color: rgba(0, 0, 0, 0.87);
-}
+} */

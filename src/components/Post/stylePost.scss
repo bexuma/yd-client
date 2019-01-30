@@ -24,13 +24,22 @@ $screen-lg-min: 1200px;
 
 .postContainer {
   h1 {
-    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.84);
+    margin-top: 40px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.25;
     letter-spacing: 0;
     font-size: 40px;
-    margin-bottom: 5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  img.post-image {
+    padding: 30px 0px;
+  }
+
+  p.author {
+    font-size: 18px;
   }
 }
 
@@ -41,8 +50,14 @@ $screen-lg-min: 1200px;
     margin: 4px 0px !important;
   }
 
+  h3,
+  h4,
+  p {
+    color: rgba(0, 0, 0, 0.84);
+  }
+
   h3 {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 28px;
     margin-bottom: 6px;
     margin-top: 0px;
@@ -50,15 +65,15 @@ $screen-lg-min: 1200px;
 
   h4 {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 21px;
     margin-bottom: 4px;
-    margin-top: 24px;
+    margin-top: 32px;
   }
 
   p {
-    font-size: 18px;
+    font-size: 17px;
     font-family: "PT Serif", serif;
-    line-height: 1.43;
+    line-height: 1.53;
     letter-spacing: -0.005em;
     font-weight: 400;
     font-style: normal;
@@ -66,6 +81,10 @@ $screen-lg-min: 1200px;
 
   p + h3 {
     margin-top: 34px;
+  }
+
+  h3 + p {
+    margin-top: 4px;
   }
 
   img {
@@ -87,7 +106,7 @@ $screen-lg-min: 1200px;
   }
 
   hr + pre {
-    margin-top: 4px !important;
+    margin-top: 8px !important;
   }
 
   blockquote {
@@ -95,7 +114,7 @@ $screen-lg-min: 1200px;
     width: 100%;
     font-style: italic;
     color: #555555;
-    padding: 1.2em 30px 1.2em 75px;
+    padding: 1.2em 30px 1.2em 45px;
     border-left: 8px solid $logo-blue;
     line-height: 1.6;
     position: relative;
@@ -104,19 +123,19 @@ $screen-lg-min: 1200px;
     p {
       font-size: 22px;
       font-family: Open Sans;
-      margin-bottom: 0px;
+      margin: 0px;
     }
   }
 
-  blockquote::before {
-    font-family: Arial;
-    content: "\201C";
-    color: $logo-blue;
-    font-size: 4em;
-    position: absolute;
-    left: 10px;
-    top: -10px;
-  }
+  // blockquote::before {
+  //   font-family: Arial;
+  //   content: "\201C";
+  //   color: $logo-blue;
+  //   font-size: 4em;
+  //   position: absolute;
+  //   left: 10px;
+  //   top: -10px;
+  // }
 
   blockquote::after {
     content: "";
@@ -131,14 +150,87 @@ $screen-lg-min: 1200px;
   }
 }
 
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.4375rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border: 1px solid #d2d2d2;
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #9acffa;
+  outline: 0;
+  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2.4375rem + 2px);
+}
+
+select.form-control:focus::-ms-value {
+  color: #495057;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.form-control-file,
+.form-control-range {
+  display: block;
+  width: 100%;
+}
+
 @media (max-width: $screen-xs-max) {
+  .postContainer {
+    width: 100%;
+
+    h1 {
+      font-size: 34px;
+    }
+  }
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .postContainer {
+    width: 725px;
+  }
 }
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  .postContainer {
+    width: 725px;
+  }
+  p {
+    color: blue !important;
+  }
 }
 
 @media (min-width: $screen-lg-min) {
+  .postContainer {
+    width: 725px;
+  }
 }

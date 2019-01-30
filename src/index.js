@@ -4,6 +4,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import Router from "./Router";
 import "./index.css";
+import "./material-kit.css"
 
 const client = new ApolloClient({
   uri: "https://tranquil-mesa-50557.herokuapp.com/graphql"

@@ -32,37 +32,33 @@ export class Post extends Component {
 
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
-        <div className="row">
-          <div
-            className="col-md-8 postContainer"
-            style={{ whiteSpace: "pre-line" }}
-          >
-            <h1 style={{ marginBottom: 10 }}>{title}</h1>
+        <div className="postContainer" style={{ whiteSpace: "pre-line" }}>
+          <h1 style={{ marginBottom: 10 }}>{title}</h1>
 
-            <img
-              alt={title}
-              style={{ width: "100%" }}
-              src={imageUrl ? imageUrl : imageNotFound}
-            />
+          <img
+            className="post-image"
+            alt={title}
+            style={{ width: "100%" }}
+            src={imageUrl ? imageUrl : imageNotFound}
+          />
 
-            <ReactMarkdown
-              escapeHtml={false}
-              source={body}
-              renderers={{ code: CodeBlock, paragraph: this.renderParagraph }}
-              className="postBody"
-            />
+          <ReactMarkdown
+            escapeHtml={false}
+            source={body}
+            renderers={{ code: CodeBlock, paragraph: this.renderParagraph }}
+            className="postBody"
+          />
 
-            <p style={{ paddingBottom: 40 }}>
-              Post has been written by{" "}
-              <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
-            </p>
-          </div>
-          {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
-            <div className="col-md-2">
-              <Link to={`/posts/${slug}/edit`}>Edit</Link>
-            </div>
-          ) : null}
+          <p style={{ paddingBottom: 40 }} className="author">
+            Post has been written by{" "}
+            <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
+          </p>
         </div>
+        {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
+          <div className="col-md-2">
+            <Link to={`/posts/${slug}/edit`}>Edit</Link>
+          </div>
+        ) : null}
       </div>
     );
   }

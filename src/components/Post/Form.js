@@ -64,7 +64,7 @@ export class Form extends Component {
       imageUrl
     } = this.state;
     return (
-      <div className="container">
+      <div className="container" style={{marginTop: '30px'}}>
         <div className="row">
           <div className="col-8">
             <div className="form-group has-default bmd-form-group">
