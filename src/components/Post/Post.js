@@ -1,15 +1,14 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
+import rmMarkdown from "remove-markdown";
+
 import CodeBlock from "./CodeBlock";
 import "./stylePost.scss";
 import { imageNotFound } from "../constants";
 
 export class Post extends Component {
-  componentDidMount() {
-    document.title = this.props.post.title;
-  }
-
   renderParagraph(props) {
     // rendering media without p wrapper
     const { children } = props;
@@ -32,6 +31,10 @@ export class Post extends Component {
 
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={rmMarkdown(body)} />
+        </Helmet>
         <div className="postContainer" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
 
