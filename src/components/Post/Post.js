@@ -32,7 +32,7 @@ export class Post extends Component {
 
     const content = rmMarkdown(body);
 
-    const disqusShortname = "example";
+    const disqusShortname = "youngdevelops";
     const disqusConfig = {
       url: window.location.href,
       identifier: id,
