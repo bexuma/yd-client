@@ -28,7 +28,7 @@ export class Post extends Component {
   }
 
   render() {
-    const { id, slug, language, title, body, imageUrl } = this.props.post;
+    const { id, slug, title, body, imageUrl } = this.props.post;
 
     const content = rmMarkdown(body);
 
@@ -64,7 +64,7 @@ export class Post extends Component {
           <img
             className="post-image"
             alt={title}
-            style={{ width: "100%" }}
+            style={{ width: "100%", minHeight: 386 }}
             src={imageUrl ? imageUrl : imageNotFound}
           />
 
@@ -75,7 +75,7 @@ export class Post extends Component {
             className="postBody"
           />
 
-          <p style={{ paddingBottom: 40 }} className="author">
+          <p style={{ paddingBottom: 4 }} className="author">
             Post has been written by{" "}
             <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
           </p>
@@ -91,6 +91,23 @@ export class Post extends Component {
             shortname={disqusShortname}
             config={disqusConfig}
           />
+        </div>
+
+        <div className="footer">
+          <p style={{ padding: "40px 0px", fontSize: "18px" }}>
+            Thanks for visiting{" "}
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "#333",
+                fontWeight: "bold"
+              }}
+            >
+              Young Developer
+            </Link>{" "}
+            🥀
+          </p>
         </div>
       </div>
     );
