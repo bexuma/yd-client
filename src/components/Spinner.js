@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default () => (
   <span
@@ -10,6 +11,6 @@ export default () => (
       marginTop: 60
     }}
   >
-    <i className="fas fa-spinner fa-spin" />
+    <FontAwesomeIcon icon="spinner" spin />
   </span>
 );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../young_developer_logo.png";
 
 export default () => {
@@ -23,7 +24,7 @@ export default () => {
         >
           <img src={logo} width="191" height="52" alt="fff" />
         </Link>
-        
+
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
             {Object.entries(icons).map((icon, index) => {
@@ -35,7 +36,7 @@ export default () => {
                     target="_blank"
                     style={{ fontSize: 24, color: "#00b0cc" }}
                   >
-                    <i className={`fab fa-${icon[0]}`} />
+                    <FontAwesomeIcon icon={["fab", `${icon[0]}`]} />
                   </a>
                 </li>
               );
