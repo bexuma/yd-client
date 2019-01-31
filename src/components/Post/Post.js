@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import rmMarkdown from "remove-markdown";
+import Disqus from "disqus-react";
 
 import CodeBlock from "./CodeBlock";
 import "./stylePost.scss";
@@ -27,9 +28,16 @@ export class Post extends Component {
   }
 
   render() {
-    const { slug, language, title, body, imageUrl } = this.props.post;
+    const { id, slug, language, title, body, imageUrl } = this.props.post;
 
     const content = rmMarkdown(body);
+
+    const disqusShortname = "example";
+    const disqusConfig = {
+      url: window.location.href,
+      identifier: id,
+      title: title
+    };
 
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
@@ -77,6 +85,13 @@ export class Post extends Component {
             <Link to={`/posts/${slug}/edit`}>Edit</Link>
           </div>
         ) : null}
+
+        <div className="article">
+          <Disqus.DiscussionEmbed
+            shortname={disqusShortname}
+            config={disqusConfig}
+          />
+        </div>
       </div>
     );
   }
