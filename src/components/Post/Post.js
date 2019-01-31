@@ -6,7 +6,7 @@ import rmMarkdown from "remove-markdown";
 
 import CodeBlock from "./CodeBlock";
 import "./stylePost.scss";
-import { imageNotFound } from "../constants";
+import { imageNotFound, siteTitle } from "../constants";
 
 export class Post extends Component {
   renderParagraph(props) {
@@ -29,12 +29,27 @@ export class Post extends Component {
   render() {
     const { slug, language, title, body, imageUrl } = this.props.post;
 
+    const content = rmMarkdown(body);
+
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
         <Helmet>
           <title>{title}</title>
-          <meta name="description" content={rmMarkdown(body)} />
+          <meta name="description" content={content} />
+          <meta property="og:type" content="blog post" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={content} />
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:site_name" content={siteTitle} />
+
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={content} />
+          <meta name="twitter:image" content={imageUrl} />
+          <meta name="twitter:site" content="@youngdevelops" />
+          <meta name="twitter:creator" content="@youngdevelops" />
         </Helmet>
+
         <div className="postContainer" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
 
