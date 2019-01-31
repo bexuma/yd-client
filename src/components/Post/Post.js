@@ -64,7 +64,7 @@ export class Post extends Component {
           <img
             className="post-image"
             alt={title}
-            style={{ width: "100%", minHeight: 386 }}
+            style={{ width: "100%"}}
             src={imageUrl ? imageUrl : imageNotFound}
           />
 
@@ -94,7 +94,7 @@ export class Post extends Component {
         </div>
 
         <div className="footer">
-          <p style={{ padding: "40px 0px", fontSize: "18px" }}>
+          <p style={{ padding: "30px 0px 40px 0px", fontSize: "18px" }} className="text-center">
             Thanks for visiting{" "}
             <Link
               to="/"
