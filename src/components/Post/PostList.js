@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-
+import { Helmet } from "react-helmet";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PostListItem from "./PostListItem";
 import Spinner from "../Spinner";
 import { siteTitle } from "../constants";
+import logo from "../../young_developer_logo.png";
 
 const PUBLISHED_POSTS_QUERY = gql`
   {
@@ -22,13 +23,26 @@ const PUBLISHED_POSTS_QUERY = gql`
 `;
 
 export class PostList extends Component {
-  componentDidMount() {
-    document.title = siteTitle;
-  }
-
   render() {
     return (
       <div className="container">
+        <Helmet>
+          <title>{siteTitle}</title>
+          {/* <meta name="description" content={} /> */}
+          <meta property="og:type" content="homepage" />
+          <meta property="og:title" content={siteTitle} />
+          {/* <meta property="og:description" content={content} /> */}
+          <meta property="og:image" content={logo} />
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:site_name" content="Young Developer" />
+
+          <meta name="twitter:title" content={siteTitle} />
+          {/* <meta name="twitter:description" content={content} /> */}
+          <meta name="twitter:image" content={logo} />
+          <meta name="twitter:site" content="@youngdevelops" />
+          <meta name="twitter:creator" content="@youngdevelops" />
+        </Helmet>
+
         <div className="row">
           <div className="col-md-10 ml-auto mr-auto">
             <Query query={PUBLISHED_POSTS_QUERY}>
