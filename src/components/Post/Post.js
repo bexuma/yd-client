@@ -7,7 +7,7 @@ import Disqus from "disqus-react";
 
 import CodeBlock from "./CodeBlock";
 import "./stylePost.scss";
-import { imageNotFound, siteTitle } from "../constants";
+import { imageNotFound } from "../constants";
 
 export class Post extends Component {
   renderParagraph(props) {
@@ -30,7 +30,7 @@ export class Post extends Component {
   render() {
     const { id, slug, title, body, imageUrl } = this.props.post;
 
-    const content = rmMarkdown(body);
+    const content = rmMarkdown(body).substring(0, 138);
 
     const disqusShortname = "youngdevelops";
     const disqusConfig = {
@@ -44,18 +44,24 @@ export class Post extends Component {
         <Helmet
           title={title}
           meta={[
+            { name: "robots", content: "index, follow" },
             { name: "description", content: content },
+            { property: "author", content: "Bexultan Myrzatayev" },
             { property: "og:type", content: "article" },
             { property: "og:title", content: title },
             { property: "og:description", content: content },
             { property: "og:image", content: imageUrl },
             { property: "og:url", content: window.location.href },
-            { property: "og:site_name", content: siteTitle },
+            { property: "og:site_name", content: "YoungDeveloper.co" },
             { name: "twitter:title", content: title },
             { name: "twitter:description", content: content },
-            { name: "twitter:image", content: imageUrl },
+            { name: "twitter:image:src", content: imageUrl },
+            { name: "twitter:card", content: "summary_large_image" },
             { name: "twitter:site", content: "@youngdevelops" },
             { name: "twitter:creator", content: "@youngdevelops" }
+          ]}
+          link={[
+            {href: window.location.href, rel: "canonical"}
           ]}
         />
 
