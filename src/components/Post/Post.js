@@ -41,29 +41,28 @@ export class Post extends Component {
 
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
-        <Helmet
-          title={title}
-          meta={[
-            { name: "robots", content: "index, follow" },
-            { name: "description", content: content },
-            { property: "author", content: "Bexultan Myrzatayev" },
-            { property: "og:type", content: "article" },
-            { property: "og:title", content: title },
-            { property: "og:description", content: content },
-            { property: "og:image", content: imageUrl },
-            { property: "og:url", content: window.location.href },
-            { property: "og:site_name", content: "YoungDeveloper.co" },
-            { name: "twitter:title", content: title },
-            { name: "twitter:description", content: content },
-            { name: "twitter:image:src", content: imageUrl },
-            { name: "twitter:card", content: "summary_large_image" },
-            { name: "twitter:site", content: "@youngdevelops" },
-            { name: "twitter:creator", content: "@youngdevelops" }
-          ]}
-          link={[
-            {href: window.location.href, rel: "canonical"}
-          ]}
-        />
+        <Helmet>
+          <title>{title}</title>
+          <link rel="canonical" href={window.location.href} />
+          <meta name="title" content={title} />
+          <meta name="referrer" content="always" />
+          <meta name="description" content={content} />
+          <meta property="og:title" content={title} />
+          <meta property="twitter:title" content={title} />
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:description" content={content} />
+          <meta name="twitter:description" content={content} />
+          <meta name="twitter:image:src" content={imageUrl} />
+          <meta property="author" content="Bexultan Myrzatayev" />
+          <meta property="og:type" content="article" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="article:author" content="Bexultan Myrzatayev" />
+          <meta name="robots" content="index, follow" />
+          <meta name="twitter:creator" content="@youngdevelops" />
+          <meta name="twitter:site" content="@youngdevelops" />
+          <meta property="og:site_name" content="Young Developer" />
+        </Helmet>
 
         <div className="postContainer" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
