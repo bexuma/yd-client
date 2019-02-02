@@ -20,7 +20,6 @@ export default () => {
         <Link
           to="/"
           className="navbar-brand"
-          style={{ minHeight: 82, paddingTop: 15, paddingBottom: 15 }}
         >
           <img src={logo} width="191" height="52" alt="fff" />
         </Link>
