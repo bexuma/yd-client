@@ -22,7 +22,7 @@ $screen-md-min: 992px;
 $screen-md-max: 1199px;
 $screen-lg-min: 1200px;
 
-.postContainer {
+.post-container {
   h1 {
     color: rgba(0, 0, 0, 0.84);
     margin-top: 40px;
@@ -43,7 +43,7 @@ $screen-lg-min: 1200px;
   }
 }
 
-.postBody {
+.post-body {
   margin-bottom: 40px;
 
   hr {
@@ -160,62 +160,49 @@ $screen-lg-min: 1200px;
   }
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.4375rem 0;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-  border: 1px solid #d2d2d2;
-  border-radius: 0;
-  box-shadow: none;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+.share-container {
+  margin-bottom: 8px;
+  .SocialMediaShareButton {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+
+    div:hover {
+      cursor: pointer;
+    }
+  }
 }
 
-.form-control::-ms-expand {
-  background-color: transparent;
-  border: 0;
+.comment-container {
+  h5 {
+    margin-bottom: 0px;
+    display: none;
+  }
 }
 
-.form-control:focus {
-  color: #495057;
-  background-color: rgba(0, 0, 0, 0);
-  border-color: #9acffa;
-  outline: 0;
-  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
-}
 
-.form-control::placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
+@media (max-width: 492px) {
+  .share-container {
+    margin-bottom: 20px;
+    h5 {
+      padding-left: 5px;
+    }
+    
+    .SocialMediaShareButton {
+      margin: 0px;
+      padding: 5px;
+      width: 25% !important;
 
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #e9ecef;
-  opacity: 1;
-}
 
-select.form-control:not([size]):not([multiple]) {
-  height: calc(2.4375rem + 2px);
-}
-
-select.form-control:focus::-ms-value {
-  color: #495057;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.form-control-file,
-.form-control-range {
-  display: block;
-  width: 100%;
+      div:hover {
+        cursor: default;
+      }
+    }
+  }
 }
 
 @media (max-width: $screen-xs-max) {
-  .postContainer {
+  .post-container {
     width: 100%;
 
     h1 {
@@ -227,7 +214,6 @@ select.form-control:focus::-ms-value {
 
     h3 {
       font-size: 26px;
-
     }
 
     blockquote {
@@ -237,22 +223,28 @@ select.form-control:focus::-ms-value {
       }
     }
   }
+
+  .comment-container {
+    h5 {
+      display: block;
+    }
+  }
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-  .postContainer {
+  .post-container {
     width: 725px;
   }
 }
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-  .postContainer {
+  .post-container {
     width: 725px;
   }
 }
 
 @media (min-width: $screen-lg-min) {
-  .postContainer {
+  .post-container {
     width: 725px;
   }
 }

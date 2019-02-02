@@ -4,10 +4,28 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import rmMarkdown from "remove-markdown";
 import Disqus from "disqus-react";
+import {
+  VKShareButton,
+  VKIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  GooglePlusShareButton,
+  GooglePlusIcon,
+  EmailShareButton,
+  EmailIcon
+} from "react-share";
 
 import CodeBlock from "./CodeBlock";
-import "./stylePost.scss";
 import { imageNotFound } from "../constants";
+import "./stylePost.scss";
 
 export class Post extends Component {
   renderParagraph(props) {
@@ -28,13 +46,14 @@ export class Post extends Component {
   }
 
   render() {
-    const { id, slug, title, body, imageUrl } = this.props.post;
+    const { id, title, body, imageUrl } = this.props.post;
 
     const content = rmMarkdown(body).substring(0, 138);
+    const url = window.location.href;
 
     const disqusShortname = "youngdevelops";
     const disqusConfig = {
-      url: window.location.href,
+      url: url,
       identifier: id,
       title: title
     };
@@ -43,13 +62,13 @@ export class Post extends Component {
       <div className="container" style={{ maxWidth: "1088px" }}>
         <Helmet>
           <title>{title}</title>
-          <link rel="canonical" href={window.location.href} />
+          <link rel="canonical" href={url} />
           <meta name="title" content={title} />
           <meta name="referrer" content="always" />
           <meta name="description" content={content} />
           <meta property="og:title" content={title} />
           <meta property="twitter:title" content={title} />
-          <meta property="og:url" content={window.location.href} />
+          <meta property="og:url" content={url} />
           <meta property="og:image" content={imageUrl} />
           <meta property="og:description" content={content} />
           <meta name="twitter:description" content={content} />
@@ -64,7 +83,7 @@ export class Post extends Component {
           <meta property="og:site_name" content="Young Developer" />
         </Helmet>
 
-        <div className="postContainer" style={{ whiteSpace: "pre-line" }}>
+        <div className="post-container" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
 
           <img
@@ -78,21 +97,82 @@ export class Post extends Component {
             escapeHtml={false}
             source={body}
             renderers={{ code: CodeBlock, paragraph: this.renderParagraph }}
-            className="postBody"
+            className="post-body"
           />
 
-          <p style={{ paddingBottom: 4 }} className="author">
+          {/* <p style={{ paddingBottom: 4 }} className="author">
             Post has been written by{" "}
             <span style={{ fontWeight: 500 }}>Bexultan Myrzatayev</span>
-          </p>
+          </p> */}
         </div>
-        {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
+        {/* {!process.env.NODE_ENV || process.env.NODE_ENV === "development" ? (
           <div className="col-md-2">
             <Link to={`/posts/${slug}/edit`}>Edit</Link>
           </div>
-        ) : null}
+        ) : null} */}
 
-        <div className="article">
+        <div className="share-container">
+          <h5>Share on Social Media</h5>
+
+          <FacebookShareButton
+            children={<FacebookIcon size={72} round={false} />}
+            url={url}
+            hashtag="#React"
+          />
+
+          <VKShareButton
+            children={<VKIcon size={72} round={false} />}
+            title={title}
+            description={content}
+            image={imageUrl}
+            url={url}
+          />
+
+          <LinkedinShareButton
+            children={<LinkedinIcon size={72} round={false} />}
+            url={url}
+            title={title}
+            description={content}
+          />
+
+          <TwitterShareButton
+            children={<TwitterIcon size={72} round={false} />}
+            url={url}
+            title={title}
+            via="youngdevelops"
+            hashtags={["React", "Markdown"]}
+          />
+
+          <TelegramShareButton
+            children={<TelegramIcon size={72} round={false} />}
+            url={url}
+            title={title}
+          />
+
+          <WhatsappShareButton
+            children={<WhatsappIcon size={72} round={false} />}
+            url={url}
+            title={title}
+            separator=":
+          "
+          />
+
+          <GooglePlusShareButton
+            children={<GooglePlusIcon size={72} round={false} />}
+            url={url}
+          />
+
+          <EmailShareButton
+            children={<EmailIcon size={72} round={false} />}
+            url={url}
+            subject={title}
+            body={url}
+          />
+        </div>
+
+        <div className="comment-container">
+          <h5>Engage</h5>
+
           <Disqus.DiscussionEmbed
             shortname={disqusShortname}
             config={disqusConfig}
