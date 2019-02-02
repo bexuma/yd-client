@@ -24,24 +24,27 @@ const PUBLISHED_POSTS_QUERY = gql`
 
 export class PostList extends Component {
   render() {
+    const description = "Bexultan Myrzatayev's programming blog.";
+
     return (
       <div className="container">
-        <Helmet>
-          <title>{siteTitle}</title>
-          {/* <meta name="description" content={} /> */}
-          <meta property="og:type" content="homepage" />
-          <meta property="og:title" content={siteTitle} />
-          {/* <meta property="og:description" content={content} /> */}
-          <meta property="og:image" content={logo} />
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:site_name" content="Young Developer" />
-
-          <meta name="twitter:title" content={siteTitle} />
-          {/* <meta name="twitter:description" content={content} /> */}
-          <meta name="twitter:image" content={logo} />
-          <meta name="twitter:site" content="@youngdevelops" />
-          <meta name="twitter:creator" content="@youngdevelops" />
-        </Helmet>
+        <Helmet
+          title={siteTitle}
+          meta={[
+            { name: "description", content: description },
+            { property: "og:type", content: "homepage" },
+            { property: "og:title", content: siteTitle },
+            { property: "og:description", content: description },
+            { property: "og:image", content: logo },
+            { property: "og:url", content: window.location.href },
+            { property: "og:site_name", content: siteTitle },
+            { name: "twitter:title", content: siteTitle },
+            { name: "twitter:description", content: description },
+            { name: "twitter:image", content: logo },
+            { name: "twitter:site", content: "@youngdevelops" },
+            { name: "twitter:creator", content: "@youngdevelops" }
+          ]}
+        />
 
         <div className="row">
           <div className="col-md-10 ml-auto mr-auto">

@@ -41,22 +41,23 @@ export class Post extends Component {
 
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={content} />
-          <meta property="og:type" content="blog post" />
-          <meta property="og:title" content={title} />
-          <meta property="og:description" content={content} />
-          <meta property="og:image" content={imageUrl} />
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:site_name" content={siteTitle} />
-
-          <meta name="twitter:title" content={title} />
-          <meta name="twitter:description" content={content} />
-          <meta name="twitter:image" content={imageUrl} />
-          <meta name="twitter:site" content="@youngdevelops" />
-          <meta name="twitter:creator" content="@youngdevelops" />
-        </Helmet>
+        <Helmet
+          title={title}
+          meta={[
+            { name: "description", content: content },
+            { property: "og:type", content: "article" },
+            { property: "og:title", content: title },
+            { property: "og:description", content: content },
+            { property: "og:image", content: imageUrl },
+            { property: "og:url", content: window.location.href },
+            { property: "og:site_name", content: siteTitle },
+            { name: "twitter:title", content: title },
+            { name: "twitter:description", content: content },
+            { name: "twitter:image", content: imageUrl },
+            { name: "twitter:site", content: "@youngdevelops" },
+            { name: "twitter:creator", content: "@youngdevelops" }
+          ]}
+        />
 
         <div className="postContainer" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
@@ -64,7 +65,7 @@ export class Post extends Component {
           <img
             className="post-image"
             alt={title}
-            style={{ width: "100%"}}
+            style={{ width: "100%" }}
             src={imageUrl ? imageUrl : imageNotFound}
           />
 
@@ -94,7 +95,10 @@ export class Post extends Component {
         </div>
 
         <div className="footer">
-          <p style={{ padding: "30px 0px 40px 0px", fontSize: "18px" }} className="text-center">
+          <p
+            style={{ padding: "30px 0px 40px 0px", fontSize: "18px" }}
+            className="text-center"
+          >
             Thanks for visiting{" "}
             <Link
               to="/"

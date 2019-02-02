@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|PT+Serif|Open+Sans:400italic"); */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|PT+Serif|Open+Sans:400italic"); */
 
 body {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -6,12 +6,32 @@ body {
   line-height: 1.5em;
 }
 
+.title, .card-title {
+  font-family: "Roboto Slab", "Times New Roman", serif;
+}
+
+.title {
+  color: #3c4858;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 30px;
+  min-height: 32px;
+  margin-bottom: 25px;
+}
+
+.card-title {
+  margin-top: 0.625rem;
+  color: #3c4858;
+  text-decoration: none;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
 .form-group.bmd-form-group {
   padding-top: 0px;
   margin-bottom: 12px;
 }
 
-/* 
 nav.navbar {
   border: 0;
   border-radius: 3px;
@@ -21,16 +41,6 @@ nav.navbar {
   background-color: #fff !important;
   box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
     0 7px 10px -5px rgba(0, 0, 0, 0.15);
-}
-
-.title {
-  color: #3c4858;
-  text-decoration: none;
-  font-weight: 700;
-  font-family: "Roboto Slab", "Times New Roman", serif;
-  margin-top: 30px;
-  min-height: 32px;
-  margin-bottom: 25px;
 }
 
 h2 {
@@ -114,15 +124,6 @@ h6 {
   font-weight: 500;
 }
 
-.card-title {
-  margin-top: 0.625rem;
-  color: #3c4858;
-  text-decoration: none;
-  font-weight: 700;
-  font-family: "Roboto Slab", "Times New Roman", serif;
-  margin-bottom: 0.75rem;
-}
-
 .card-title a {
   color: inherit;
 }
@@ -154,4 +155,4 @@ p.author {
   font-size: 14px;
   margin: 0 0 10px;
   color: rgba(0, 0, 0, 0.87);
-} */
+}

@@ -8,13 +8,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-import "typeface-open-sans";
-import "typeface-roboto-slab";
-import "typeface-pt-serif";
-import "typeface-roboto";
-
 import "./index.css";
-import "./material-kit.css";
+// import "./material-kit.css";
 
 library.add(fab, faSpinner);
 
