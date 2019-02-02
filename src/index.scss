@@ -173,7 +173,11 @@ p.author {
   }
 }
 
-@media (min-width: 0px) and (max-width: $screen-xs-max) {
+@media (max-width: $screen-xs-max) {
+  collapse navbar-collapse {
+    display: none;
+  }
+
   .navbar-expand-lg > .container {
     padding: 0px 15px;
 
