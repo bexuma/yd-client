@@ -1,4 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|PT+Serif|Open+Sans:400italic"); */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|PT+Serif|Open+Sans:400italic");
+
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
 
 body {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -6,8 +13,13 @@ body {
   line-height: 1.5em;
 }
 
-.title, .card-title {
+.title,
+.card-title {
   font-family: "Roboto Slab", "Times New Roman", serif;
+}
+
+nav > .container {
+  padding: 0px 20px;
 }
 
 .title {
@@ -155,4 +167,47 @@ p.author {
   font-size: 14px;
   margin: 0 0 10px;
   color: rgba(0, 0, 0, 0.87);
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .collapse navbar-collapse {
+    display: none;
+  }
+
+  .navbar-expand-lg > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: $screen-sm-max) and (max-width: $screen-md-min) {
+  .navbar-expand-lg > .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }  
+
+  .collapse navbar-collapse {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  .navbar-expand-lg > .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }  
+
+  .collapse navbar-collapse {
+    display: none;
+  }
+
+  ul.navbar-nav.ml-auto {
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .collapse navbar-collapse {
+    display: none;
+  }
 }

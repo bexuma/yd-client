@@ -27,5 +27,3 @@ yarn-error.log*
 /src/components/Post/PostCreate
 /src/components/Post/PostUpdate
 /src/components/Post/DraftPostList
-
-src/material-kit.css
