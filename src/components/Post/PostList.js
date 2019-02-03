@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 import PostListItem from "./PostListItem";
 import Spinner from "../Spinner";
 import { siteTitle } from "../constants";
-import logo from "../../young_developer_logo.png";
+import logo from "../../logoSquare.png";
 
 const PUBLISHED_POSTS_QUERY = gql`
   {
