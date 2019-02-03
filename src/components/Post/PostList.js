@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 import PostListItem from "./PostListItem";
 import Spinner from "../Spinner";
 import { siteTitle } from "../constants";
-import logo from "../../logoSquare.png";
 
 const PUBLISHED_POSTS_QUERY = gql`
   {
@@ -25,6 +24,7 @@ const PUBLISHED_POSTS_QUERY = gql`
 export class PostList extends Component {
   render() {
     const description = "Bexultan Myrzatayev's programming blog.";
+    const squareLogoUrl = "https://s3.ap-northeast-2.amazonaws.com/youngdeveloper/logoSquare.png";
 
     return (
       <div className="container">
@@ -35,12 +35,12 @@ export class PostList extends Component {
             { property: "og:type", content: "homepage" },
             { property: "og:title", content: siteTitle },
             { property: "og:description", content: description },
-            { property: "og:image", content: logo },
+            { property: "og:image", content: squareLogoUrl },
             { property: "og:url", content: window.location.href },
             { property: "og:site_name", content: siteTitle },
             { name: "twitter:title", content: siteTitle },
             { name: "twitter:description", content: description },
-            { name: "twitter:image", content: logo },
+            { name: "twitter:image", content: squareLogoUrl },
             { name: "twitter:site", content: "@youngdevelops" },
             { name: "twitter:creator", content: "@youngdevelops" }
           ]}
