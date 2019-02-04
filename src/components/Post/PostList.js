@@ -6,6 +6,8 @@ import PostListItem from "./PostListItem";
 import Spinner from "../Spinner";
 import { siteTitle } from "../constants";
 
+import "./postList.scss";
+
 const PUBLISHED_POSTS_QUERY = gql`
   {
     publishedPosts {
@@ -24,7 +26,8 @@ const PUBLISHED_POSTS_QUERY = gql`
 export class PostList extends Component {
   render() {
     const description = "Bexultan Myrzatayev's programming blog.";
-    const squareLogoUrl = "https://s3.ap-northeast-2.amazonaws.com/youngdeveloper/logoSquare.png";
+    const squareLogoUrl =
+      "https://s3.ap-northeast-2.amazonaws.com/youngdeveloper/logoSquare.png";
 
     return (
       <div className="container">

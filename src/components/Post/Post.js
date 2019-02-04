@@ -25,7 +25,7 @@ import {
 
 import CodeBlock from "./CodeBlock";
 import { imageNotFound } from "../constants";
-import "./stylePost.scss";
+import "./post.scss";
 
 export class Post extends Component {
   renderParagraph(props) {
