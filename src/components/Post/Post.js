@@ -48,7 +48,7 @@ export class Post extends Component {
   render() {
     const { id, title, body, imageUrl } = this.props.post;
 
-    const content = rmMarkdown(body).substring(0, 138);
+    const description = rmMarkdown(body).substring(0, 138);
     const url = window.location.href;
 
     const disqusShortname = "youngdevelops";
@@ -60,28 +60,32 @@ export class Post extends Component {
 
     return (
       <div className="container" style={{ maxWidth: "1088px" }}>
-        <Helmet>
-          <title>{title}</title>
-          <link rel="canonical" href={url} />
-          <meta name="title" content={title} />
-          <meta name="referrer" content="always" />
-          <meta name="description" content={content} />
-          <meta property="og:title" content={title} />
-          <meta property="twitter:title" content={title} />
-          <meta property="og:url" content={url} />
-          <meta property="og:image" content={imageUrl} />
-          <meta property="og:description" content={content} />
-          <meta name="twitter:description" content={content} />
-          <meta name="twitter:image:src" content={imageUrl} />
-          <meta property="author" content="Bexultan Myrzatayev" />
-          <meta property="og:type" content="article" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta property="article:author" content="Bexultan Myrzatayev" />
-          <meta name="robots" content="index, follow" />
-          <meta name="twitter:creator" content="@youngdevelops" />
-          <meta name="twitter:site" content="@youngdevelops" />
-          <meta property="og:site_name" content="Young Developer" />
-        </Helmet>
+        <Helmet
+          title={title}
+          link={[{ rel: "canonical", href: url }]}
+          meta={[
+            { name: "robots", content: "index, follow" },
+            { name: "title", content: title },
+            { name: "referrer", content: "always" },
+            { name: "description", content: description },
+            { property: "og:title", content: title },
+            { property: "og:type", content: "article" },
+            { property: "og:url", content: url },
+            { property: "og:image", content: imageUrl },
+            { property: "og:description", content: description },
+            { property: "og:site_name", content: "Young Developer" },
+
+            { name: "twitter:card", content: "summary_large_image" },
+            { name: "twitter:site", content: "@youngdevelops" },
+            { name: "twitter:title", content: title },
+            { name: "twitter:description", content: description },
+            { name: "twitter:creator", content: "@youngdevelops" },
+            { name: "twitter:image", content: imageUrl },
+
+            { property: "article:author", content: "Bexultan Myrzatayev" },
+            { property: "author", content: "Bexultan Myrzatayev" }
+          ]}
+        />
 
         <div className="post-container" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
@@ -123,7 +127,7 @@ export class Post extends Component {
           <VKShareButton
             children={<VKIcon size={72} round={false} />}
             title={title}
-            description={content}
+            description={description}
             image={imageUrl}
             url={url}
           />
@@ -132,7 +136,7 @@ export class Post extends Component {
             children={<LinkedinIcon size={72} round={false} />}
             url={url}
             title={title}
-            description={content}
+            description={description}
           />
 
           <TwitterShareButton
