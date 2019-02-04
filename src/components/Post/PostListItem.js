@@ -5,7 +5,6 @@ import moment from "moment";
 export default props => {
   const { slug, title, status, imageUrl, created_at } = props;
   const postedTime = moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow();
-  console.log(imageUrl);
   return (
     <div className="card-blog">
       <div className="row">

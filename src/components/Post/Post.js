@@ -69,7 +69,6 @@ export class Post extends Component {
             { property: "og:description", content: description },
             { property: "og:image", content: imageUrl },
             { property: "og:url", content: url },
-            { property: "og:site_name", content: "Young Developer" },
             { name: "twitter:title", content: title },
             { name: "twitter:description", content: description },
             { name: "twitter:image", content: imageUrl },
@@ -77,7 +76,7 @@ export class Post extends Component {
             { name: "twitter:creator", content: "@youngdevelops" }
           ]}
         />
-        
+
         <div className="post-container" style={{ whiteSpace: "pre-line" }}>
           <h1 style={{ marginBottom: 10 }}>{title}</h1>
 
