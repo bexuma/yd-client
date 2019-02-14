@@ -16,6 +16,9 @@ const DRAFT_POSTS_QUERY = gql`
       body
       imageUrl
       created_at
+      tags {
+        name
+      }
     }
   }
 `;
@@ -32,19 +35,9 @@ export class DraftPostList extends Component {
                 if (loading) return <Spinner />;
                 if (error) return <p>Error :(</p>;
 
-                return data.draftPosts.map(
-                  ({ id, slug, status, title, body, imageUrl, created_at }) => (
-                    <PostListItem
-                      key={id}
-                      slug={slug}
-                      status={status}
-                      title={title}
-                      body={body}
-                      imageUrl={imageUrl}
-                      created_at={created_at}
-                    />
-                  )
-                );
+                return data.draftPosts.map(post => (
+                  <PostListItem key={post.id} post={post} />
+                ));
               }}
             </Query>
           </div>

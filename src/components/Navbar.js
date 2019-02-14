@@ -17,15 +17,21 @@ export default () => {
   return (
     <nav className="navbar navbar-default navbar-expand-lg">
       <div className="container" style={{ maxWidth: "1088px" }}>
-        <Link
-          to="/"
-          className="navbar-brand"
-        >
+        <Link to="/" className="navbar-brand">
           <img src={logo} width="191" height="52" alt="fff" />
         </Link>
 
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
+            {/* <li className="nav-item" style={{ marginLeft: 24 }}>
+              <Link to="/">Blog</Link>
+            </li>
+            <li className="nav-item" style={{ marginLeft: 24 }}>
+              <Link to="/">Resume</Link>
+            </li>
+            <li className="nav-item" style={{ marginLeft: 24 }}>
+              <Link to="/">Contact</Link>
+            </li> */}
             {Object.entries(icons).map((icon, index) => {
               return (
                 <li key={index} className="nav-item" style={{ marginLeft: 24 }}>

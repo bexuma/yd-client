@@ -10,6 +10,8 @@ const POST_CREATE_MUTATION = gql`
     $imageUrl: String!
   ) {
     postCreate(language: $language, title: $title, body: $body, imageUrl: $imageUrl) {
+      id
+      status
       slug
     }
   }

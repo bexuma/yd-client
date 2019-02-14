@@ -19,6 +19,10 @@ const PUBLISHED_POSTS_QUERY = gql`
       body
       imageUrl
       created_at
+      tags {
+        id
+        name
+      }
     }
   }
 `;
@@ -72,24 +76,10 @@ export class PostList extends Component {
                   <div>
                     <h2 className="title">Latest Blogposts</h2>
                     {data.publishedPosts.map(
-                      ({
-                        id,
-                        title,
-                        body,
-                        imageUrl,
-                        slug,
-                        status,
-                        created_at
-                      }) => (
+                      (post) => (
                         <PostListItem
-                          key={id}
-                          slug={slug}
-                          postId={id}
-                          title={title}
-                          body={body}
-                          imageUrl={imageUrl}
-                          status={status}
-                          created_at={created_at}
+                          key={post.id}
+                          post={post}
                         />
                       )
                     )}

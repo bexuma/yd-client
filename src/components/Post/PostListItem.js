@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default props => {
-  const { slug, title, status, imageUrl, created_at } = props;
+  const { slug, title, status, imageUrl, created_at, tags } = props.post;
   const postedTime = moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow();
   return (
     <div className="card-blog">
@@ -28,7 +28,11 @@ export default props => {
         </div>
 
         <div className="col-md-8" style={{ whiteSpace: "pre-line" }}>
-          <h6 className="card-category text-info">React.js</h6>
+      
+          {tags.map(({id, name}) => {
+            return <h6 key={id} className="card-category text-info">{name}</h6>;
+          })}
+
           <h3 className="card-title">
             <Link to={`/posts/${slug}`}>{title}</Link>
           </h3>
